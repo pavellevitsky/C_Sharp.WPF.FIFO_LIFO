@@ -1,0 +1,91 @@
+﻿<Window x:Class="UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI"
+        mc:Ignorable="d"
+        Title="C# examples" Height="400" Width="1200">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="#DAF7A6">
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="600"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center">size</Label>
+                <Label Grid.Row="0" Grid.Column="2" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center">data</Label>
+                <Label Grid.Row="0" Grid.Column="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center">count</Label>
+                <Label Grid.Row="0" Grid.Column="4" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center">head</Label>
+                <Label Grid.Row="0" Grid.Column="5" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center">tail</Label>
+                <Label Grid.Row="1" Grid.Column="0" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center">FIFO</Label>
+                <TextBlock Grid.Row="1" Grid.Column="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Name="fifo_size"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="2" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Name="fifo_data"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Name="fifo_count"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="4" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Name="fifo_head"></TextBlock>
+                <TextBlock Grid.Row="1" Grid.Column="5" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Name="fifo_tail"></TextBlock>
+                <Button Grid.Row="1" Grid.Column="6" FontSize="14" Height="25" FontWeight="Bold" Foreground="red" Click="Button_fifo_reset" Name="fifo_reset">reset</Button>
+                <Label Grid.Row="2" Grid.Column="0" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center">LIFO</Label>
+                <TextBlock Grid.Row="2" Grid.Column="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Name="lifo_size"></TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="2" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Name="lifo_data"></TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Name="lifo_count"></TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="4" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Name="lifo_head"></TextBlock>
+                <Button Grid.Row="2" Grid.Column="6" FontSize="14" Height="25" FontWeight="Bold" Foreground="red" Click="Button_lifo_reset" Name="lifo_reset">reset</Button>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="1" Background="yellow">
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center">FIFO</Label>
+                <TextBox Grid.Row="0" Grid.Column="1" Width="60" FontSize="16" VerticalAlignment="Center" Name="fifo_write_data"></TextBox>
+                <Button Grid.Row="0" Grid.Column="2" FontSize="14" Height="25" Width="80" FontWeight="Bold" HorizontalAlignment="Left" Click="Button_fifo_write" Name="fifo_write">WRITE</Button>
+                <Button Grid.Row="0" Grid.Column="3" FontSize="14" Height="25" Width="80" FontWeight="Bold" HorizontalAlignment="Center" Click="Button_fifo_read" Name="fifo_read">READ</Button>
+                <TextBlock Grid.Row="0" Grid.Column="4" Width="60" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Name="fifo_read_data"></TextBlock>
+                <Label Grid.Row="1" Grid.Column="0" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center">LIFO</Label>
+                <TextBox Grid.Row="1" Grid.Column="1" Width="60" FontSize="16" VerticalAlignment="Center" Name="lifo_write_data"></TextBox>
+                <Button Grid.Row="1" Grid.Column="2" FontSize="14" Height="25" Width="80" FontWeight="Bold" HorizontalAlignment="Left" Click="Button_lifo_write" Name="lifo_write">WRITE</Button>
+                <Button Grid.Row="1" Grid.Column="3" FontSize="14" Height="25" Width="80" FontWeight="Bold" HorizontalAlignment="Center" Click="Button_lifo_read" Name="lifo_read">READ</Button>
+                <TextBlock Grid.Row="1" Grid.Column="4" Width="60" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Name="lifo_read_data"></TextBlock>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2" Background="Red">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+    </Grid>
+</Window>
+
