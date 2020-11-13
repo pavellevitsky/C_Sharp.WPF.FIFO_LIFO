@@ -26,9 +26,9 @@
 
             if (count != BUFFER_SIZE)
             {
-                head = (head + 1) % BUFFER_SIZE;
-                BUFFER_DATA[head] = data;
                 count++;
+                BUFFER_DATA[head] = data;
+                head = (head + 1) % BUFFER_SIZE;
                 exit_code = true;
             }
 
@@ -41,8 +41,8 @@
             if (count != 0)
             {
                 count--;
-                tail = (tail + 1) % BUFFER_SIZE;
                 data = BUFFER_DATA[tail];
+                tail = (tail + 1) % BUFFER_SIZE;
                 exit_code = true;
             }
 
@@ -82,7 +82,7 @@
                 }
                 else if (tail < head)
                 {
-                    if ((i > tail) && (i <= head))
+                    if ((i >= tail) && (i < head))
                     {
                         buffer_string = buffer_string + BUFFER_DATA[i].ToString() + " ";
                     }
