@@ -1,5 +1,24 @@
 ﻿namespace Model
 {
+    public enum FsmState
+    {
+        STATE_Idle,
+        STATE_Card_Inserted,
+        STATE_Pin_Entered,
+        STATE_Money_Ready,
+        STATE_INVALID
+    }
+
+    public enum FsmEvent
+    {
+        EVENT_Card_Insert,
+        EVENT_Pin_Enter,
+        EVENT_Withdraw,
+        EVENT_Terminate,
+        EVENT_Cancel,
+        EVENT_INVALID
+    }
+
     public class Model
     {
         public static BufferFifo CreateFifoBuffer()
@@ -9,6 +28,10 @@
         public static BufferLifo CreateLifoBuffer()
         {
             return new BufferLifo();
+        }
+        public static FiniteStateMachine InitialiseFsm()
+        {
+            return new FiniteStateMachine();
         }
     }
 
@@ -168,6 +191,48 @@
                 }
             }
             return buffer_string;
+        }
+    }
+
+    public class FiniteStateMachine
+    {
+        private FsmState fsm_state = FsmState.STATE_Idle;
+
+        public void HandlerInsertCard()
+        {
+            if (fsm_state == FsmState.STATE_Idle)
+            {
+                fsm_state = FsmState.STATE_Card_Inserted;
+            }
+        }
+        public void HandlerEnterPin()
+        {
+            if (fsm_state == FsmState.STATE_Card_Inserted)
+            {
+                fsm_state = FsmState.STATE_Pin_Entered;
+            }
+        }
+        public void HandlerWithdraw()
+        {
+            if (fsm_state == FsmState.STATE_Pin_Entered)
+            {
+                fsm_state = FsmState.STATE_Money_Ready;
+            }
+        }
+        public void HandlerTerminate()
+        {
+            if (fsm_state == FsmState.STATE_Money_Ready)
+            {
+                fsm_state = FsmState.STATE_Idle;
+            }
+        }
+        public void HandlerCancel()
+        {
+            fsm_state = FsmState.STATE_Idle;
+        }
+        public FsmState get_fsm_state()
+        {
+            return fsm_state;
         }
     }
 }

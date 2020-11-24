@@ -6,10 +6,11 @@ namespace UI
 {
     public partial class MainWindow : Window
     {
-        Thread thread_RefreshBuffersContent;
+        Thread thread_RefreshPanelContent;
         Thread thread_SimulateBuffersTraffic;
         Model.BufferFifo fifo_buffer;
         Model.BufferLifo lifo_buffer;
+        Model.FiniteStateMachine fsm;
         bool stay_in_loop = true;
 
         public MainWindow()
@@ -17,9 +18,10 @@ namespace UI
             InitializeComponent();
             fifo_buffer = Model.Model.CreateFifoBuffer();
             lifo_buffer = Model.Model.CreateLifoBuffer();
-            thread_RefreshBuffersContent = new Thread(new ThreadStart(RefreshBuffersContent));
+            fsm = Model.Model.InitialiseFsm();
+            thread_RefreshPanelContent = new Thread(new ThreadStart(RefreshPanelContent));
             thread_SimulateBuffersTraffic = new Thread(new ThreadStart(SimulateBuffersTraffic));
-            thread_RefreshBuffersContent.Start();
+            thread_RefreshPanelContent.Start();
             thread_SimulateBuffersTraffic.Start();
         }
 
@@ -59,6 +61,27 @@ namespace UI
         private void Button_lifo_reset (object sender, RoutedEventArgs e)
         {
             lifo_buffer.reset();
+        }
+
+        private void Button_fsm_card (object sender, RoutedEventArgs e)
+        {
+            fsm.HandlerInsertCard();
+        }
+        private void Button_fsm_pin (object sender, RoutedEventArgs e)
+        {
+            fsm.HandlerEnterPin();
+        }
+        private void Button_fsm_withdraw (object sender, RoutedEventArgs e)
+        {
+            fsm.HandlerWithdraw();
+        }
+        private void Button_fsm_terminate (object sender, RoutedEventArgs e)
+        {
+            fsm.HandlerTerminate();
+        }
+        private void Button_fsm_cancel (object sender, RoutedEventArgs e)
+        {
+            fsm.HandlerCancel();
         }
 
         private void SimulateBuffersTraffic()
@@ -118,7 +141,7 @@ namespace UI
             }
         }
 
-        private void RefreshBuffersContent()
+        private void RefreshPanelContent()
         {
             while (stay_in_loop)
             {
@@ -135,6 +158,8 @@ namespace UI
                     lifo_size.Text = lifo_buffer.get_size().ToString();
                     lifo_count.Text = lifo_head.Text = lifo_buffer.get_count().ToString();
                     lifo_data.Text = lifo_buffer.get_buffer_string().ToString();
+
+                    fsm_state.Text = fsm.get_fsm_state().ToString();
                 });
             }
         }

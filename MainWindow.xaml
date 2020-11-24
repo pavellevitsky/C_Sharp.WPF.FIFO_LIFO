@@ -3,15 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:UI"
         mc:Ignorable="d"
-        Title="C# examples" Height="400" Width="1200">
+        Title="C# examples" Height="500" Width="1200">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="200"/>
             <RowDefinition Height="140"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="140"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Background="#DAF7A6">
@@ -43,13 +42,13 @@
                 <TextBlock Grid.Row="1" Grid.Column="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Name="fifo_count"></TextBlock>
                 <TextBlock Grid.Row="1" Grid.Column="4" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Name="fifo_head"></TextBlock>
                 <TextBlock Grid.Row="1" Grid.Column="5" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Name="fifo_tail"></TextBlock>
-                <Button Grid.Row="1" Grid.Column="6" FontSize="14" Height="25" FontWeight="Bold" Foreground="red" Click="Button_fifo_reset" Name="fifo_reset">reset</Button>
+                <Button Grid.Row="1" Grid.Column="6" FontSize="14" Height="25" FontWeight="Bold" Background="red" Foreground="white" Click="Button_fifo_reset" Name="fifo_reset">reset</Button>
                 <Label Grid.Row="2" Grid.Column="0" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center">LIFO</Label>
                 <TextBlock Grid.Row="2" Grid.Column="1" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Name="lifo_size"></TextBlock>
                 <TextBlock Grid.Row="2" Grid.Column="2" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Name="lifo_data"></TextBlock>
                 <TextBlock Grid.Row="2" Grid.Column="3" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Name="lifo_count"></TextBlock>
                 <TextBlock Grid.Row="2" Grid.Column="4" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Name="lifo_head"></TextBlock>
-                <Button Grid.Row="2" Grid.Column="6" FontSize="14" Height="25" FontWeight="Bold" Foreground="red" Click="Button_lifo_reset" Name="lifo_reset">reset</Button>
+                <Button Grid.Row="2" Grid.Column="6" FontSize="14" Height="25" FontWeight="Bold" Background="red" Foreground="white" Click="Button_lifo_reset" Name="lifo_reset">reset</Button>
             </Grid>
         </Grid>
 
@@ -79,12 +78,25 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="2" Background="Red">
+        <Grid Grid.Row="2" Background="skyblue">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="120"/>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="140"/>
+                <ColumnDefinition Width="140"/>
+                <ColumnDefinition Width="140"/>
+                <ColumnDefinition Width="140"/>
+                <ColumnDefinition Width="140"/>
+                <ColumnDefinition Width="140"/>
             </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center">FSM State</Label>
+            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Name="fsm_state"></TextBlock>
+            <Label Grid.Row="0" Grid.Column="2" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center">FSM Events</Label>
+            <Button Grid.Row="0" Grid.Column="3" FontSize="14" Height="25" Width="80" FontWeight="Bold" HorizontalAlignment="Center" Click="Button_fsm_card" Name="fsm_card">Insert Card</Button>
+            <Button Grid.Row="0" Grid.Column="4" FontSize="14" Height="25" Width="80" FontWeight="Bold" HorizontalAlignment="Center" Click="Button_fsm_pin" Name="fsm_pin">Enter PIN</Button>
+            <Button Grid.Row="0" Grid.Column="5" FontSize="14" Height="25" Width="80" FontWeight="Bold" HorizontalAlignment="Center" Click="Button_fsm_withdraw" Name="fsm_withdraw">Withdraw</Button>
+            <Button Grid.Row="0" Grid.Column="6" FontSize="14" Height="25" Width="80" FontWeight="Bold" HorizontalAlignment="Center" Click="Button_fsm_terminate" Name="fsm_terminate">Terminate</Button>
+            <Button Grid.Row="0" Grid.Column="7" FontSize="14" Height="25" Width="80" FontWeight="Bold" HorizontalAlignment="Center" Click="Button_fsm_cancel" Name="fsm_cancel" Background="red" Foreground="white">CANCEL</Button>
         </Grid>
     </Grid>
 </Window>
