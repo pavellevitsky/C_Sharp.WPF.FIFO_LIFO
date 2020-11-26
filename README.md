@@ -1,1 +1,1 @@
-# FIFO and LIFO queues visualization
+# Visualization of FIFO, LIFO, FSM
